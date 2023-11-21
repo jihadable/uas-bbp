@@ -281,8 +281,8 @@ let arrayMahasiswa = [
         "Alya Azzahra",
         "Alya", 
         22, 8, "https://daring.uin-suka.ac.id/pic2/g3zdcmbwg15t1mbqh1",
-        "",
-        ""
+        "Kebumen",
+        "Maaf hanya bisa membalas pesan, bukan perasaanmu"
     ),
     new MahasiswaLakiLaki(
         "Abdullah Ridho Laksmana", 
