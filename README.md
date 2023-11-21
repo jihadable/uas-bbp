@@ -1,6 +1,6 @@
 # UAS Mata Kuliah Bahasa-bahasa Pemrogramman
 
-## Data Mahasiswa Informatika UIN SUKA Semeseter Ganjil Tahun 2023
+## Dashboard Mahasiswa Informatika UIN SUKA Semeseter Ganjil Tahun 2023
 
 ### Creator
 Nama: Umar Jihad
