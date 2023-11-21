@@ -23,7 +23,7 @@ NIM: 22106050029
         SVGs: <a href="https://tabler-icons.io/">Tabler icons</a>
     </li>
     <li>
-        Font: <a href="https://fonts.google.com/">Font google</a>
+        Font: <a href="https://fonts.google.com/">Google fonts</a>
     </li>
 </ul>
 
