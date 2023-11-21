@@ -170,7 +170,7 @@ class Mahasiswa {
                     <td>${selectedMahasiswa.getNIM()}</td>
                 </tr>
                 <tr>
-                    <td class="label">Asal</td>
+                    <td class="label">Asal kota</td>
                     <td>${selectedMahasiswa.getAsal()}</td>
                 </tr>
                 <tr>
