@@ -31,9 +31,10 @@ NIM: 22106050029
 
 Web ini merupakan tugas project Ulangan Akhir Semester Mata Kuliah Bahasa-bahasa Pemrogramman.
 
-##### Note 
+```
+Note
 UAS Mata Kuliah BBP: Membuat Aplikasi Sederhana dengan Menerapkan Paradigma Pemrogramman Full OOP.
-
+```
 
 Web ini hanya terdiri dari 1 halaman. Terdapat 3 section yaitu Creator section, Tools section, dan Data section.
 
