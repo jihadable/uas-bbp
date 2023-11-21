@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAS BBP</title>
+    <link rel="icon" href="https://cdn.icon-icons.com/icons2/758/PNG/512/full-moon-black-circle_icon-icons.com_64234.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="detail-mahasiswa-container" id="detail-mahasiswa-container">
+    </div>
+    <div class="overlay"></div>
+
+    
+    <div class="mahasiswa-pembuat">
+        <h1>Creator</h1>
+        <div class="pembuat">
+            <div class="img"><img src="https://daring.uin-suka.ac.id/pic2/g3zdcmbwg15t1mbsh2" alt="Umar Jihad"></div>
+            <div class="info">
+                <div class="nama">Umar</div>
+                <div class="nim">22106050029</div>
+            </div>
+        </div>
+    </div>
+
+    <h1>Daftar Mahasiswa</h1>
+
+    <div class="search">
+        <label for="search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                <path d="M21 21l-6 -6"></path>
+            </svg>
+        </label>
+        <input type="text" id="search" placeholder="Cari">
+    </div>
+
+    <div class="filter">
+        <div class="gender">
+            <div class="header">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gender-bigender" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M11 11m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                    <path d="M19 3l-5 5"></path>
+                    <path d="M15 3h4v4"></path>
+                    <path d="M11 16v6"></path>
+                    <path d="M8 19h6"></path>
+                </svg>
+                <span>Gender: <span class="gender-result">All genders</span></span>
+            </div>
+            <div class="menu">
+                <div class="item">All genders</div>
+                <div class="item">Male</div>
+                <div class="item">Female</div>
+            </div>
+        </div>
+        <div class="sort">
+            <div class="header">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-descending" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 6l9 0"></path>
+                    <path d="M4 12l7 0"></path>
+                    <path d="M4 18l7 0"></path>
+                    <path d="M15 15l3 3l3 -3"></path>
+                    <path d="M18 6l0 12"></path>
+                </svg>
+                <span>Sort by: <span class="sort-result">Default</span></span>
+            </div>
+            <div class="menu">
+                <div class="item">Default</div>
+                <div class="item">Alphabet</div>
+            </div>
+        </div>
+    </div>
+    
+    <h3 class="results"></h3>
+    
+    <h1 class="zero-result">INPUT BETUL-BETUL LAH</h1>
+    
+    <div class="grid-mahasiswa"></div>
+
+    <a href="https://github.com/jihadable/uas-bbp" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+        </svg>
+        <span>Source code</span>
+    </a>
+
+    <script src="./app.js"></script>
+</body>
+</html>

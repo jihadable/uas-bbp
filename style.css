@@ -1,0 +1,381 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body{
+    background-color: #0D1F2D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+h1, h3{
+    color: #eee;
+    margin-top: 2rem;
+}
+
+.detail-mahasiswa-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    background-color: #f3f4f6;
+    border-radius: .5rem;
+    display: none;
+    z-index: 10;
+    
+    &.active{
+        display: flex;
+    }
+    
+    .mahasiswa{
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+        height: 100%;
+        color: black;
+
+        .img{
+            width: 35%;
+            display: flex;
+            border-radius: .5rem;
+            overflow: hidden;
+
+            & img{
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+
+        .info{
+            border-collapse: collapse;
+            width: 65%;
+            height: fit-content;
+            color: #000;
+        
+            & td{
+                border: 1px solid rgb(0,0,0,.2);
+                padding: .5rem;
+                text-align: left;
+                
+                &.label{
+                    white-space: nowrap;
+                    vertical-align: top;
+                }
+
+                .nama{
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: center;
+
+                    .male{
+                        color: #2986cc;
+                    }
+    
+                    .female{
+                        color: #c90076;
+                    }
+                }
+            }      
+        }
+    }
+
+    .close-btn{
+        position: absolute;
+        top: -1.5rem;
+        right: -1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem;
+        border-radius: 5rem;
+        color: white;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgb(255,255,255,.1);
+        }
+    }
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0,0,0,.7);
+    display: none;
+    z-index: 5;
+
+    &.active{
+        display: block;
+    }
+}
+
+@keyframes skeleton_animation {
+    0% {transform: translateX(-150%) skewX(-20deg);}
+    50% {transform: translateX(-60%) skewX(-20deg);}
+    100% {transform: translateX(150%) skewX(-20deg);}
+}
+
+.mahasiswa-pembuat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .pembuat{
+        background-color: rgb(255,255,255,.05);
+        border-radius: .5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+
+        .img{
+            width: 100%;
+            display: flex;
+            
+            & img{
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+
+        .info{
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+
+            .nama{
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .nim{
+                font-size: .9rem;
+                color: rgb(255,255,255,.5);
+            }
+        }
+    }
+}
+
+.search{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 50rem;
+    background-color: rgb(255,255,255,.05);
+    padding: .5rem;
+    border: 2px solid transparent;
+
+    &:focus-within{
+        border: 2px solid rgb(255,255,255,.1);
+    }
+
+    & label{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & input{
+        color: #eee;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+}
+
+.filter{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #eee;
+
+    .gender,.sort{
+        display: flex;
+        position: relative;
+
+        .header{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgb(255,255,255,.05);
+            padding: 0.5rem;
+            padding-right: .8rem;
+            border-radius: .5rem;
+            cursor: pointer;
+        }
+
+        .menu{
+            top: 110%;
+            left: 0;
+            position: absolute;
+            background-color: #eee;
+            color: black;
+            border-radius: .5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all .2s;
+
+            &.active{
+                max-height: 999px;
+            }
+
+            .item{
+                padding: 0.2rem 0.5rem;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: rgb(0,0,0,.1);
+                }
+            }
+        }
+    }
+}
+
+.zero-result{
+    display: none;
+    word-spacing: .5rem;
+}
+
+.grid-mahasiswa{
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    .mahasiswa{
+        background-color: rgb(255,255,255,.05);
+        border-radius: .5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        border: 2px solid rgb(255,255,255,.05);
+        cursor: pointer;
+        
+        &:hover{
+            border: 2px solid rgb(255,255,255,.3);
+        }
+
+        .img{
+            width: 100%;
+            display: flex;
+            
+            & img{
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+
+        .info{
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+
+            .nama{
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .nim{
+                font-size: .9rem;
+                color: rgb(255,255,255,.5);
+            }
+        }
+    }
+}
+
+a{
+    margin: 3rem auto;
+    margin-bottom: 5rem;
+    text-decoration: none;
+    color: #eee;
+    background-color: rgb(255,255,255,.05);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: .5rem;
+}
+
+@media screen and (max-width: 480px) {
+    .detail-mahasiswa-container{
+        width: calc(100% - 2rem);
+
+        .mahasiswa{
+            flex-direction: column;
+
+            .img{
+                width: 100%;
+            }
+
+            .info{
+                width: 100%;
+            }
+        }
+
+        .close-btn{
+            top: .5rem;
+            right: .5rem;
+            background-color: black;
+
+            &:hover{
+                background-color: black;
+            }
+        }
+    }
+
+    .search{
+        width: calc(100% - 2rem);
+    }
+
+    .filter{
+        width: 100%;
+        padding: 0 1rem;
+        flex-direction: column;
+        align-items: start;
+
+        .sort{
+            align-self: end;
+        }
+    }
+
+    .grid-mahasiswa{
+        width: 100%;
+        padding: 0 1rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+    .search{
+        width: 40vw;
+    }
+    
+    .grid-mahasiswa{
+        width: 90vw;
+    }
+}
