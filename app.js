@@ -74,16 +74,18 @@ class Mahasiswa {
         return `${tahun_angkatan}1060500${nim > 9 ? nim : `0${nim}`}`
     }
 
-    static generateGrid(firstTime){
+    getJenisKelaminSVG(svg){
+        return svg
+    }
+
+    static generateGrid(){
         const gridMahasiswa = document.querySelector(".grid-mahasiswa")
         const results = document.querySelector(".results")
         const zeroResult = document.querySelector(".zero-result")
 
         zeroResult.style.display = "none"
 
-        if (!firstTime){
-            gridMahasiswa.innerHTML = ""
-        }
+        gridMahasiswa.innerHTML = ""
 
         let array = [...showArrayMahasiswa]
 
@@ -144,20 +146,7 @@ class Mahasiswa {
                     <td>
                         <div class="nama">
                             <span>${selectedMahasiswa.getNama()}</span>
-                            ${selectedMahasiswa.jenis_kelamin == "male" ?
-                            `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gender-male male" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M10 14m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
-                                <path d="M19 5l-5.4 5.4"></path>
-                                <path d="M19 5h-5"></path>
-                                <path d="M19 5v5"></path>
-                            </svg>` : 
-                            `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gender-female female" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M12 9m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
-                                <path d="M12 14v7"></path>
-                                <path d="M9 18h6"></path>
-                            </svg>`}
+                            ${selectedMahasiswa.getJenisKelaminSVG()}
                         </div>
                     </td>
                 </tr>
@@ -207,10 +196,35 @@ class Mahasiswa {
 
 class MahasiswaLakiLaki extends Mahasiswa {
     jenis_kelamin = "male"
+
+    getJenisKelaminSVG(){
+        let maleSVG = 
+        `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gender-male male" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M10 14m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
+            <path d="M19 5l-5.4 5.4"></path>
+            <path d="M19 5h-5"></path>
+            <path d="M19 5v5"></path>
+        </svg>`
+
+        return super.getJenisKelaminSVG(maleSVG)
+    }
 }
 
 class MahasiswaPerempuan extends Mahasiswa {
     jenis_kelamin = "female"
+
+    getJenisKelaminSVG(){
+        let femaleSVG = 
+        `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-gender-female female" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 9m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
+            <path d="M12 14v7"></path>
+            <path d="M9 18h6"></path>
+        </svg>`
+        
+        return super.getJenisKelaminSVG(femaleSVG)
+    }
 }
 
 let arrayMahasiswa = [
@@ -431,7 +445,8 @@ let gender = "All genders"
 let sort = "Default"
 
 // initial
-Mahasiswa.generateGrid(true)
+// document.querySelector(".grid-mahasiswa").innerHTML = ""
+Mahasiswa.generateGrid()
 
 // show and hide filters menu
 const showFilterBtns = document.querySelectorAll(".header")
@@ -461,7 +476,7 @@ search.addEventListener("input", e => {
 
     showArrayMahasiswa = [...arrayMahasiswa].filter(mahasiswa => mahasiswa.getNama().toLowerCase().includes(keyword))
 
-    Mahasiswa.generateGrid(false)
+    Mahasiswa.generateGrid()
 })
 
 // handle when gender filter is changing
@@ -473,7 +488,7 @@ genderMenus.forEach(menu => {
             gender = menu.innerText
             document.querySelector(".gender-result").innerText = gender
 
-            Mahasiswa.generateGrid(false)
+            Mahasiswa.generateGrid()
         }
     })
 })
@@ -487,7 +502,7 @@ sortMenus.forEach(menu => {
             sort = menu.innerText
             document.querySelector(".sort-result").innerText = sort
 
-            Mahasiswa.generateGrid(false)
+            Mahasiswa.generateGrid()
         }
     })
 })
