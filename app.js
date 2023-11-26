@@ -90,7 +90,7 @@ class Mahasiswa {
         let array = [...showArrayMahasiswa]
 
         // gender filtering
-        if (gender !== "All genders"){
+        if (gender != "All genders"){
             array = [...showArrayMahasiswa].filter(mahasiswa => mahasiswa.jenis_kelamin.toLowerCase() == gender.toLowerCase())
         }
 
@@ -445,18 +445,19 @@ let gender = "All genders"
 let sort = "Default"
 
 // initial
-// document.querySelector(".grid-mahasiswa").innerHTML = ""
 Mahasiswa.generateGrid()
 
 // show and hide filters menu
 const showFilterBtns = document.querySelectorAll(".header")
 
+// show filters menu
 showFilterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         btn.nextElementSibling.classList.toggle("active")
     })
 })
 
+// hide filters menu
 document.addEventListener("click", (e) => {
     if (!showFilterBtns[0].contains(e.target)){
         showFilterBtns[0].nextElementSibling.classList.remove("active")
