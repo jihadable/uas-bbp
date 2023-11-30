@@ -51,21 +51,79 @@ class Mahasiswa {
         this.kata_kata = kata_kata
     }
 
-    getNama(){
-        return this.#nama
+    static init(){
+
+        // show and hide filters menu
+        const showFilterBtns = document.querySelectorAll(".header")
+
+        // show filters menu
+        showFilterBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.nextElementSibling.classList.toggle("active")
+            })
+        })
+
+        // hide filters menu
+        document.addEventListener("click", (e) => {
+            if (!showFilterBtns[0].contains(e.target)){
+                showFilterBtns[0].nextElementSibling.classList.remove("active")
+            }
+            
+            if (!showFilterBtns[1].contains(e.target)){
+                showFilterBtns[1].nextElementSibling.classList.remove("active")
+            }
+        })
+
+        // search
+        const search = document.getElementById("search")
+        // console.log(search)
+
+        search.addEventListener("input", e => {
+
+            let keyword = e.target.value.toLowerCase()
+            // console.log(keyword)
+
+            showArrayMahasiswa = [...arrayMahasiswa].filter(mahasiswa => mahasiswa.getNama().toLowerCase().includes(keyword))
+
+            Mahasiswa.generateGrid()
+        })
+
+        // handle when gender filter is changing
+        const genderMenus = document.querySelectorAll(".gender .item")
+
+        genderMenus.forEach(menu => {
+            menu.addEventListener("click", () => {
+                if (gender != menu.innerText){
+                    gender = menu.innerText
+                    document.querySelector(".gender-result").innerText = gender
+
+                    Mahasiswa.generateGrid()
+                }
+            })
+        })
+
+        // handle when sort filter is changing
+        const sortMenus = document.querySelectorAll(".sort .item")
+
+        sortMenus.forEach(menu => {
+            menu.addEventListener("click", () => {
+                if (sort != menu.innerText){
+                    sort = menu.innerText
+                    document.querySelector(".sort-result").innerText = sort
+
+                    Mahasiswa.generateGrid()
+                }
+            })
+        })
     }
 
-    getNamaPanggilan(){
-        return this.#nama_panggilan
-    }
+    getNama = () => this.#nama
 
-    getFoto(){
-        return this.#foto
-    }
+    getNamaPanggilan = () => this.#nama_panggilan
 
-    getAsal(){
-        return this.#asal
-    }
+    getFoto = () => this.#foto
+
+    getAsal = () => this.#asal
 
     getNIM(){
         let tahun_angkatan = this.#tahun_angkatan
@@ -229,7 +287,7 @@ class MahasiswaPerempuan extends Mahasiswa {
 
 let arrayMahasiswa = [
     new MahasiswaLakiLaki(
-        "Sstri Haris Abdurizal", 
+        "Satria Haris Abdurizal", 
         "Satria", 
         20, 33, "https://daring.uin-suka.ac.id/pic2/g3ydcmbwg15t1mbtgm",
         "",
@@ -444,66 +502,6 @@ let showArrayMahasiswa = [...arrayMahasiswa]
 let gender = "All genders"
 let sort = "Default"
 
-// initial
+// initialization
 Mahasiswa.generateGrid()
-
-// show and hide filters menu
-const showFilterBtns = document.querySelectorAll(".header")
-
-// show filters menu
-showFilterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.nextElementSibling.classList.toggle("active")
-    })
-})
-
-// hide filters menu
-document.addEventListener("click", (e) => {
-    if (!showFilterBtns[0].contains(e.target)){
-        showFilterBtns[0].nextElementSibling.classList.remove("active")
-    }
-    
-    if (!showFilterBtns[1].contains(e.target)){
-        showFilterBtns[1].nextElementSibling.classList.remove("active")
-    }
-})
-
-// search
-const search = document.getElementById("search")
-
-search.addEventListener("input", e => {
-
-    keyword = e.target.value.toLowerCase()
-
-    showArrayMahasiswa = [...arrayMahasiswa].filter(mahasiswa => mahasiswa.getNama().toLowerCase().includes(keyword))
-
-    Mahasiswa.generateGrid()
-})
-
-// handle when gender filter is changing
-const genderMenus = document.querySelectorAll(".gender .item")
-
-genderMenus.forEach(menu => {
-    menu.addEventListener("click", () => {
-        if (gender != menu.innerText){
-            gender = menu.innerText
-            document.querySelector(".gender-result").innerText = gender
-
-            Mahasiswa.generateGrid()
-        }
-    })
-})
-
-// handle when sort filter is changing
-const sortMenus = document.querySelectorAll(".sort .item")
-
-sortMenus.forEach(menu => {
-    menu.addEventListener("click", () => {
-        if (sort != menu.innerText){
-            sort = menu.innerText
-            document.querySelector(".sort-result").innerText = sort
-
-            Mahasiswa.generateGrid()
-        }
-    })
-})
+Mahasiswa.init()
