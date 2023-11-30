@@ -45,3 +45,6 @@ Web ini hanya terdiri dari 1 halaman. Terdapat 3 section yaitu Creator section, 
     <li>Sort by feature</li>
     <li>Gender filtering</li>
 </ul>
+
+#### Class Diagram
+<img src="./class-diagram-uas-bbp.png" />
