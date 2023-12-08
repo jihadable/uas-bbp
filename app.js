@@ -410,7 +410,7 @@ let arrayMahasiswa = [
         "Zidan, Dan Zahran, Sahabat Sapi, SS, Yidan, Zizah, Jidun, Tong, dll💀", 
         22, 16, "https://daring.uin-suka.ac.id/pic2/g3zdcmbwg15t1mbrgy", 
         "Sleman", 
-        "Jika anda tidak berawal dari keluarga sukses, maka keluarga sukses itu harus dimulai dari anda"
+        'All she wanted just "MONKEY". But, the "K" is silent 😅'
     ),
     new MahasiswaLakiLaki(
         "Amiruzidan Hafauzani Kholid",
@@ -479,8 +479,8 @@ let arrayMahasiswa = [
         "Luthfi Arif Syauqi",
         "Luthfi", 
         22, 26, "https://daring.uin-suka.ac.id/pic2/g3zdcmbwg15t1mbsgy",
-        "",
-        ""
+        "Karimun",
+        "Tetap semangat"
     ),
     new MahasiswaLakiLaki(
         "Ibnu Zaki Alhawari",
